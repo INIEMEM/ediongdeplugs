@@ -46,7 +46,7 @@ export default function HiringManagerRegisterForm() {
     profilePicture: null,
     cvFile: null,
     portfolioLink: '',
-    usersHired: '',
+    usersHired: 0,
   });
 
   const isFormValid = useMemo(() => {
@@ -117,7 +117,7 @@ export default function HiringManagerRegisterForm() {
     <div className="flex">
       <div className="flex-1 max-h-[100vh] md:h-auto bg-gradient-to-br from-blue-600 to-indigo-700 text-white hidden lg:flex flex-col justify-center items-center cursor-pointer transition-all duration-300 hover:brightness-110">
       <BriefcaseIcon className="h-16 w-16 mb-4" />
-        <h2 className="text-2xl md:text-3xl font-bold mb-2">I'm a Hiring Manager</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">I'm an Employer</h2>
         <p className="text-base md:text-lg max-w-xs text-center px-4">
           Discover top talents, manage hiring, and build your dream team easily.
         </p>
@@ -149,12 +149,12 @@ export default function HiringManagerRegisterForm() {
           <Form.Item label="Portfolio Link">
             <Input onChange={e => handleChange('portfolioLink', e.target.value)} />
           </Form.Item>
-          <Form.Item label="Number of Users Hired">
+          {/* <Form.Item label="Number of Users Hired">
             <Input
               type="number"
               onChange={e => handleChange('usersHired', e.target.value ? parseInt(e.target.value) : '')}
             />
-          </Form.Item>
+          </Form.Item> */}
           <Form.Item label="Profile Picture">
             <Upload beforeUpload={file => { handleFileChange(file, 'profile'); return false; }} showUploadList={false}>
               <Button icon={<UploadOutlined />}>Upload Profile Picture</Button>

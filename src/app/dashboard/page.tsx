@@ -51,13 +51,13 @@ export default function DashboardHome() {
 
   useEffect(() => {
     const lowerSearch = search.toLowerCase();
-    const skill = filter.skill.toLowerCase();
+    const skill = filter?.skill.toLowerCase();
     const experience = parseInt(filter.experience) || 0;
 
     const filtered = talents.filter(talent => {
       const matchesSearch = talent.name?.toLowerCase().includes(lowerSearch);
       const matchesSkill = skill
-        ? talent.skills?.some((s: string) => s.toLowerCase().includes(skill))
+        ? talent?.skills?.some((s: string) => s.toLowerCase().includes(skill))
         : true;
       const matchesExperience = experience
         ? talent.yearsOfExperience >= experience
@@ -90,7 +90,7 @@ export default function DashboardHome() {
         <Col xs={24} sm={12} lg={8}>
           <Input
             placeholder="Filter by skill"
-            value={filter.skill}
+            value={filter?.skill}
             onChange={(e) => setFilter({ ...filter, skill: e.target.value })}
           />
         </Col>
@@ -98,7 +98,7 @@ export default function DashboardHome() {
           <Input
             placeholder="Min experience (years)"
             type="number"
-            value={filter.experience}
+            value={filter?.experience}
             onChange={(e) =>
               setFilter({ ...filter, experience: e.target.value })
             }
@@ -107,7 +107,7 @@ export default function DashboardHome() {
       </Row>
 
       <Title level={4} style={{ marginBottom: 16, color: "#334155" }}>
-        {filteredTalents.length} Talent{filteredTalents.length !== 1 ? 's' : ''}
+        {filteredTalents?.length} Talent{filteredTalents?.length !== 1 ? 's' : ''}
       </Title>
 
       <Row gutter={[24, 24]}>
@@ -121,7 +121,7 @@ export default function DashboardHome() {
                 <Image
                   alt="profile"
                   height={220}
-                  src={talent.profilePictureUrl || "/default-avatar.png"}
+                  src={talent?.profilePictureUrl || "/default-avatar.png"}
                   style={{ objectFit: "cover", borderTopLeftRadius: "12px", borderTopRightRadius: "12px" }}
                 />
               }
@@ -149,18 +149,18 @@ export default function DashboardHome() {
               ]}
             >
               <Space direction="vertical" size={4} style={{ width: "100%" }}>
-                <Title level={5} style={{ marginBottom: 0 }}>{talent.name}</Title>
+                <Title level={5} style={{ marginBottom: 0 }}>{talent?.name}</Title>
                 <Paragraph style={{ fontSize: 13, margin: 0, color: "#475569" }}>
-                  {talent.description.slice(0, 100)}...
+                  {talent?.description.slice(0, 100)}...
                 </Paragraph>
                 <div>
                   <span className="text-sm text-gray-600">
-                    {talent.yearsOfExperience} years experience |{" "}
-                    {talent.companies.length} compan{talent.companies.length === 1 ? 'y' : 'ies'}
+                    {talent?.yearsOfExperience} years experience |{" "}
+                    {talent?.companies?.length} compan{talent?.companies?.length === 1 ? 'y' : 'ies'}
                   </span>
                 </div>
                 <div className="flex flex-wrap gap-1">
-                  {talent.skills?.slice(0, 6).map((skill: string, index: number) => (
+                  {talent?.skills?.slice(0, 6).map((skill: string, index: number) => (
                     <Tag color="blue" key={index}>{skill}</Tag>
                   ))}
                 </div>

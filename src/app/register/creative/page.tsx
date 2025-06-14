@@ -24,7 +24,7 @@ const { TextArea } = Input;
 const { Option } = Select;
 // const { Title } = Typography;
 
-type UserType = 'developer' | 'creative' | 'hiring_manager';
+type UserType = 'developer' | 'creative' ;
 type ProjectInput = {
   image: File | null;
   link: string;

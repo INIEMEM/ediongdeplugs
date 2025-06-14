@@ -36,7 +36,7 @@ export default function RoleSelection() {
         onClick={() => router.push('/register/hiring-manager')}
       >
         <BriefcaseIcon className="h-16 w-16 mb-4" />
-        <h2 className="text-2xl md:text-3xl font-bold mb-2">I'm a Hiring Manager</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-2">I'm an  Employeer</h2>
         <p className="text-base md:text-lg max-w-xs text-center px-4">
           Discover top talents, manage hiring, and build your dream team easily.
         </p>
