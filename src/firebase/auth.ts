@@ -24,7 +24,22 @@ export type RegisterData = {
     description: string;
     link: string;
   }[];
+ 
   // createdAt: string;
+};
+export type HiringManagerRegisterData = {
+  email: string;
+  password: string;
+  name: string;
+  userType: 'hiring_manager';
+  description: string;
+  country: string;
+  state: string;
+  address: string;
+  profilePictureUrl: string;
+  portfolioLink: string;
+  usersHired: number;
+  cvUrl: string;
 };
 
 export async function registerUser(data: RegisterData) {
@@ -41,6 +56,22 @@ export async function registerUser(data: RegisterData) {
   });
 
   console.log('the response ', response)
+
+  return uid;
+}
+
+export async function registerHiringManager(data: HiringManagerRegisterData) {
+  const { email, password, ...rest } = data;
+  const userCred = await createUserWithEmailAndPassword(auth, email, password);
+  const uid = userCred.user.uid;
+
+  await setDoc(doc(db, 'users', uid), {
+    uid,
+    email,
+    createdAt: new Date().toISOString(),
+    views: [],
+    ...rest,
+  });
 
   return uid;
 }

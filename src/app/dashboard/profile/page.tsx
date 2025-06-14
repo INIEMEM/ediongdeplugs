@@ -81,6 +81,7 @@ const Profile = () => {
   }, [userData]);
 
   if (loading) return <Spin className="mt-10 block mx-auto" size="large" />;
+  console.log('the user ', userData)
   if (!userData) return <div>User not found.</div>;
 
   const {
